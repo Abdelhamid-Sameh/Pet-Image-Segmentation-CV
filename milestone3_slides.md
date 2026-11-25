@@ -216,8 +216,9 @@ Allowed: **an updated version of the same model**
 - 95% confidence interval: **+0.040 to +0.044**
 - Better on **77%** of test images
 - Cats +4.9 points, dogs +3.8 points
+- Hardest 10% of test images: **0.519 → 0.580** (+6.1 points)
 
-**Say:** I compared both models on every one of the 3,669 test images. The gain is not caused by a few lucky images. The interval covers test-image sampling, not training randomness.
+**Say:** I compared both models on every one of the 3,669 test images. The gain is not caused by a few lucky images, and it is largest on the hardest images. The interval covers test-image sampling, not training randomness. The hardest images are chosen using both models' scores, so the comparison does not favour either model.
 
 ---
 
@@ -261,12 +262,15 @@ Allowed: **an updated version of the same model**
 
 **Title:** *DEMO*
 
-[FIGURE: m3_demo.png]
+**Live demo** on a new photo that is not in the dataset (`demo/dog_on_grass.png`)
+
+[FIGURE: the demo output for the new photo — photo, predicted mask, pet overlay. Backup if the live demo fails: m3_demo.png]
 
 - The trained model segments a photo it has never seen
-- Shown: photo, predicted mask, pet highlighted
+- Shown: photo, predicted mask, pet highlighted in orange
+- No training needed: the saved model is loaded in a few seconds
 
-**Say:** I will now run the model live on a new photo.
+**Say:** This photo is not from the dataset. I run the demo cell in notebook 3, which loads the saved model and segments every photo in the demo folder. If the live run fails, the backup slide shows the same demo on three test images.
 
 ---
 
@@ -328,3 +332,5 @@ Allowed: **an updated version of the same model**
 - **Why is the test score higher than validation?** All runs show it. It is a different set of images, so a small gap is normal.
 - **Why does pre-training help the boundary most?** Pre-trained features already detect edges well, and the boundary is exactly the edge of the pet.
 - **Why train for 60 epochs if it is not allowed?** Only as analysis, to test the Milestone 2 hypothesis and to check that D was trained fairly. It is not the improvement.
+- **How are the "hardest 10%" images chosen?** By the average score of both models. Choosing them by the baseline's score alone would unfairly favour the new model, because some of those images are just ones where the baseline was unlucky.
+- **What if the demo photo looks different from the dataset?** Every photo is resized to 256 × 256, so very wide photos get squashed, and the model has only seen cats and dogs. Unusual crops, several animals or other animals can reduce quality.

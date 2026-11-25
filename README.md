@@ -29,7 +29,7 @@ Figures are in [`results/`](results/) (`m3_*.png` for Milestone 3).
 1. Open a notebook in Google Colab (or the VS Code Colab extension) with a **GPU** runtime and a **Python** kernel.
 2. Run the cells in order. The dataset is downloaded to the runtime's local disk; checkpoints, result files and figures are saved to `MyDrive/Pet-Image-Segmentation-CV/outputs/`.
 3. Finished runs are reloaded from `outputs/` instead of being retrained, so after a disconnect just re-run the cells. Notebook 3 reuses the Milestone 2 baseline saved there by notebook 2.
-4. Demo: put your own photos in `MyDrive/Pet-Image-Segmentation-CV/demo/` and run the demo cell in notebook 3.
+4. Demo: put your own photos in `MyDrive/Pet-Image-Segmentation-CV/demo/` and run the demo cell in notebook 3. An example photo is in [`demo/`](demo/).
 
 ## Dataset & License
 
